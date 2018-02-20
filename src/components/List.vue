@@ -2,6 +2,8 @@
   <div>
     <h1>My To Do List</h1>
     <br/>
+    <input v-model="newItem" >
+    <button @click="addItemToList">Add</button>
     <!--displays list -->
     <ul>
       <li v-for="(item, index) in listItems" v-bind:key="index">{{ item }}</li>
@@ -14,7 +16,14 @@ export default {
   name: 'list',
   data () {
     return {
-      listItems: ['buy food', 'play games', 'sleep']
+      listItems: ['lady bird', 'call me by your name', 'the shape of water'],
+      newItem: ''
+    }
+  },
+  methods: {
+    addItemToList () {
+      this.listItems.push(this.newItem)
+      this.newItem = ''
     }
   }
 }
