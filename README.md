@@ -1,6 +1,6 @@
-# search
+# Vue To-Do App
 
-> A Vue.js search app
+> A simple Vue.js to-do app including unit testing
 
 ## Build Setup
 
