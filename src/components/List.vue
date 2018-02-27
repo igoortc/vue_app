@@ -1,29 +1,48 @@
 <template>
-  <div>
-    <h1>My To Do List</h1>
-    <br/>
-    <input v-model="newItem" >
-    <button @click="addItemToList">Add</button>
-    <!--displays list -->
-    <ul>
-      <li v-for="(item, index) in listItems" v-bind:key="index">{{ item }}</li>
-    </ul>
+  <div class="card box">
+    <box-header :title="title" :loggedIn="loggedIn"></box-header>
+    <div class="card-body movies">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="keyword" placeholder="Search a movie" v-model="keyword">
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <ul>
+            <li v-for="(movie, index) in searchedMovies" v-bind:key="index">
+                {{ movie.title }}
+            </li>
+        </ul>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'list',
+  name: 'welcome',
   data () {
     return {
-      listItems: ['lady bird', 'call me by your name', 'the shape of water'],
-      newItem: ''
+      title: '90th Oscars: Best Picture',
+      loggedIn: true,
+      keyword: '',
+      movies: [
+        {title: 'Lady Bird'},
+        {title: 'Call Me by Your Name'},
+        {title: 'The Shape of Water'},
+        {title: 'The Post'},
+        {title: 'Three Billboards Outside Ebbing, Missouri'},
+        {title: 'Dunkirk'},
+        {title: 'The Darkest Hour'},
+        {title: 'Phantom Thread'},
+        {title: 'Get Out'}
+      ]
     }
   },
-  methods: {
-    addItemToList () {
-      this.listItems.push(this.newItem)
-      this.newItem = ''
+  computed: {
+    searchedMovies () {
+      return this.movies.filter(movie => {
+        return movie.title.toLowerCase().includes(this.keyword.toLowerCase())
+      })
     }
   }
 }

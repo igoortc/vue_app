@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:700');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+// Colors
+$darkerpurple: #310F32;
+$darkpurple: #4A284B;
+$lighterpurple: #754E7A;
+$lightpurple: #6C486C;
+$white: #fff;
+$black: #000;
+$gray: #6C757D;
+$lightgray: #999;
+$lightergray: #F0EEF0;
+$primary: $darkpurple;
+
+//Fonts
+$font-family-sans-serif: 'Lato', sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+// Mixins
+@mixin circular-gradient($color1, $color2) {
+	background: $color1;
+	background: -webkit-radial-gradient(circle, $color1, $color2);
+	background: -o-radial-gradient(circle, $color1, $color2);
+	background: -moz-radial-gradient(circle, $color1, $color2);
+	background: radial-gradient(circle, $color1, $color2);
+}
+
+@mixin linear-gradient($color1, $color2) {
+	background: $color1;
+	background: -webkit-linear-gradient($color1, $color2);
+	background: -o-linear-gradient($color1, $color2);
+	background: -moz-linear-gradient($color1, $color2);
+	background: linear-gradient($color1, $color2);
+}
+
+@mixin no-border {
+	border: 0;
+  border-radius: 0;
+}
+
+//Styles
+html, 
+body {
+	height: 100%;
+}
+
+body {
+	@include circular-gradient($darkerpurple, $darkpurple);
+}
+
+a {
+	color: $gray !important;
+	&:hover {
+		color: $lightgray !important;
+		text-decoration: none !important;
+	}
+}
+
+.card.box {
+	width: 450px;
+  margin: 0 auto;
+  position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 2px 2px $black;
+	@include no-border;
+
+	.card-header {
+		@include linear-gradient($lighterpurple, $lightpurple);
+		@include no-border;
+		color: $white;
+
+		.fa-times, .fa-sign-out {
+			float: right;
+			cursor: pointer;
+			color: $white;
+
+			&:hover {
+				color: $darkpurple;
+			}
+		}
+	}
+
+	.card-body {
+		padding: 25px;
+
+		.form-control {
+			background: $lightergray;
+		}
+
+		input {
+			border-right: 0;
+		}
+
+		.input-group-text {
+			background: $lightergray;
+			border-left: 0;
+			color: $gray;
+		}
+	}
+}
+
+.btn.log-in {
+	padding: 10px 30px;
+	border: 0;
+	color: $white !important;
+
+	&:hover {
+		-webkit-transition: all 60ms ease;
+		transition: all 60ms ease;
+		opacity: .85;
+	}
+}
+
+.movies {
+	height: 320px;
+}

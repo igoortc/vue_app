@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import BoxHeader from './components/BoxHeader'
 
+Vue.component('box-header', BoxHeader)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
