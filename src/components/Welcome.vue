@@ -2,7 +2,7 @@
   <div class="card box">
     <box-header :title="title" :loggedIn="loggedIn"></box-header>
     <div class="card-body">
-      <form>
+      <form v-on:submit.prevent="login">
         <div class="input-group mb-3">
           <input type="text" class="form-control" id="username" placeholder="Username" required>
           <div class="input-group-append">
@@ -16,10 +16,10 @@
           </div>
         </div>
         <div class="row mt-4 align-items-center">
-          <div class="col-md-4">
-            <router-link :to="{ path: '/logged-in'}" class="btn btn-primary log-in">Sign In</router-link>
+          <div class="col-md-4 col-sm-4">
+            <button class="btn btn-primary log-in" type="submit">Sign In</button>
           </div>
-          <div class="col-md-8 text-left">
+          <div class="col-md-8 col-sm-8 text-left">
             <a href="#">Lost Your Password?</a>
           </div>
         </div>
@@ -35,6 +35,11 @@ export default {
     return {
       title: 'Login Form',
       loggedIn: false
+    }
+  },
+  methods: {
+    login () {
+      this.$router.push({ path: '/logged-in' })
     }
   }
 }

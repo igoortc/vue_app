@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'BoxHeader',
+  name: 'box-header',
   props: ['title', 'loggedIn']
 }
 </script>
